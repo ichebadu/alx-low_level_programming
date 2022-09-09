@@ -2,9 +2,11 @@
 #include <time.h>
 #include <stdio.h>
 
-/* more headers goes there */
-
-/* betty style doc for function main goes there */
+/**
+/* main - Entry point
+ * 
+/* Return: Always 0 (success)
+ */
 int main(void)
 {
 	int n;
@@ -14,7 +16,7 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	L = n % 10;
-	
+
 	if (L > 5)
 	{
 		printf("%s %d is %d and is greater than 5\n", s, n, L);
@@ -27,7 +29,7 @@ int main(void)
 
 	else if (L < 6)
 	{
-		printf("%s %d is %d and is less than 6 than 0\n", s, n, L);
+		printf("%s %d is %d and is less than 6 than and not 0\n", s, n, L);
 	}
 
 	return (0);

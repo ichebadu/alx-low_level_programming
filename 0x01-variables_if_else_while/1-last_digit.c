@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+
 /* more headers goes there */
 
 /* betty style doc for function main goes there */
@@ -23,7 +24,7 @@ int main(void)
 		printf("%s %d is %d and is 0\n", s, n L);
 	}
 
-	else
+	else if (L < 6)
 	{
 		printf("%s %d is %d and is less than 6 than 0\n", s, n L);
 	}

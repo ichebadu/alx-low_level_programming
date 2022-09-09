@@ -4,7 +4,7 @@
 
 /**
  * main - Entry point
- * 
+ *
  * Return: Always 0 (success)
  */
 int main(void)
@@ -29,7 +29,7 @@ int main(void)
 
 	else if (L < 6)
 	{
-		printf("%s %d is %d and is less than 6 than and not 0\n", s, n, L);
+		printf("%s %d is %d and is less than 6 and not 0\n", s, n, L);
 	}
 
 	return (0);

@@ -1,9 +1,9 @@
 #include "main.h"
 #include <string.h>
 /**
- *  _strlen -> length of string function
- *  @s: string pointer points to this function
- *  Return: length of string
+ *  _strlen -> function to get the length of a string
+ *  @s: string pointer passed to this function
+ *  Return: returns length of the string
  */
 int _strlen(char *s)
 {
@@ -14,4 +14,4 @@ int _strlen(char *s)
 		len += 1;
 	}
 	return (len);
-}	
+}

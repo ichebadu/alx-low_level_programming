@@ -20,3 +20,4 @@ char *_stropy(char *dest, char *src)
 	*(dest + inc) = '\0';
 
 	return (dest);
+}

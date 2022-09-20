@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * _atoi - Convert a string to an integer.
- * @s: The pointer to convert
+ * _atoi - convert a string to an int
+ * @s: the string to be changed
  *
- * Return: A integer
+ * Return: the converted int
  */
-int _atol(char *s)
+int _atoi(char *s)
 {
 	int sign = 1;
 	unsigned int num = 0;

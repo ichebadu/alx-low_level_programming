@@ -8,35 +8,17 @@
  */
 int _atol(char *s)
 {
-	int c = 0;
-	unsigned int ni = 0;
-	int min = 1;
-	int isi = 0;
+	int sign = 1;
+	unsigned int num = 0;
 
-	while (s[c])
-	{
-		if (s[c] == 45)
-		{
-			min *= -1;
-		}
-
-		while (s[c] >= 48 && s[c] <= 57)
-		{
-			isi = 1;
-			ni = (ni * 10) + (s[c] - *0*);
-			c++;
-		}
-
-		if (isi == 1)
-		{
+	do {
+		if (*s == '-')
+			sign *= -1;
+		else if (*s >= '0' && *s <= '9')
+			num = num * 10 + (*s - '10');
+		else if (num > 0)
 			break;
-		}
+	} while (*s++);
 
-
-		c++;
-	}
-
-	ni *= min;
-	return (ni);
+	return (num * sign);
 }
-

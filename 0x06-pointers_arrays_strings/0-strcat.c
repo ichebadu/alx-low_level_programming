@@ -5,7 +5,7 @@
  * @dest: first parameter
  * @src: second parameter
  * Return: string
- * 
+ *
  */
 char *_strcat(char *dest, char *src)
 {

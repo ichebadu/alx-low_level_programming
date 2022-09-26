@@ -1,19 +1,20 @@
 #include "main.h"
 
 /**
- * _memset -> memory function
- * @s: string
- * @b: a character
- * @n: an integer
+ * *_memset - memory function
+ * @s: string memory area to be filled
+ * @b: a character to copy
+ * @n: an n number of times to copy b
+ *
  * Return: a string
  */
 char *_memset(char *s, char b, unsigned int n);
 {
-	unsigned int a;
+	unsigned int i;
 
-	for (a = 0; a < n; a++)
+	for (i = 0; i < n; i++)
 	{
-		s[a] = b;
+		s[i] = b;
 	}
 
 	return (s);

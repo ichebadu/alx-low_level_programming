@@ -1,10 +1,11 @@
 #include "main."
 
 /**
- * print_diagsums - prints the sum of the two diagonals
- * of a square matrix of integers
+ * print_diagsums - prints the sum of the two diagonals of a square matrix
  * @a: square matrix of which we print the sum of diagonals
  * @size: size of the matrix
+ *
+ * Return: void
  */
 void print_diagsums(int *a, int size)
 {

@@ -5,7 +5,7 @@
  * @haystack: string in which to check for needle
  * @needle: substring to find in haystack
  *
- * Return: pointer to the beginning of the located substring or NULL if the substring is not found
+ * Return: pointer to beginning of the substring or NULL if no match
  */
 char *_strstr(char *haystack, char *needle)
 {

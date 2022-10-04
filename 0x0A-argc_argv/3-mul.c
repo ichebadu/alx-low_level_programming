@@ -3,8 +3,6 @@
  * main - function prints two line multiplication
  * @argc: argc parameter
  * @argv: an array enter from command line
- * @n1: first number
- * @n2: second number
  * Return: 0
  */
 

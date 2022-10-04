@@ -6,6 +6,9 @@
  * Return: 0
  */
 
-int main(int argc _attribute_((unused)), char *argv[])
+int main(int argc, char *argv[] _attribute_((unused)))
 {
 	printf("the number of argument is %d\n", argc - 1);
+
+	return (0);
+}

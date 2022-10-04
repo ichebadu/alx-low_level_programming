@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
 	int multiplcationTable, n1, n2;
 
-	for (argc != 3)
+	if (argc != 3)
 	{
 		printf("%s\n", "Error");
 		return (1);

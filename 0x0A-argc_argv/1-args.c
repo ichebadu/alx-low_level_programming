@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[] __attribute__((unused)))
 {
-	printf("the number of argument is %d\n", argc - 1);
+	printf("number of arg %d\n", argc - 1);
 
 	return (0);
 }

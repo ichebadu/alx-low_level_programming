@@ -8,4 +8,4 @@
 
 int main(int argc _attribute_((unused)), char *argv[])
 {
-	printf("the number of argument is %d\n", argc);
+	printf("the number of argument is %d\n", argc - 1);

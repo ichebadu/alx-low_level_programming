@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main"
+#include "main.h"
 /**
  * main - Write a program that adds positive numbers
  * @argc: count of arguments

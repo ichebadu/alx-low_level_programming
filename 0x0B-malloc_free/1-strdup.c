@@ -13,20 +13,23 @@
 
 char *_strdup(char *str)
 {
-	char *copy;
-	int i, j;
+	int i, end;
+	char *array;
 
 	if (str == NULL)
 		return (NULL);
-	for (i = 0; i < str[i]; i++)
+
+	for (end = 0; end <= *str; end++)
 	{
-		;
 	}
-	i++;
-	copy = malloc(sizeof(char) * i);
-	if (copy == NULL)
+
+	end += 1;
+	array = malloc(sizeof(char) * end);
+
+	for (i = 0; i < end; i++)
+		array[i] = str[i];
+
+	if (array == NULL)
 		return (NULL);
-	for (j = 0; j < i; j++)
-		copy[j] = str[j];
-	return (copy);
+	return (array);
 }

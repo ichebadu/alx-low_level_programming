@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "main.h"
 /**
  * main - Write a program that adds positive numbers

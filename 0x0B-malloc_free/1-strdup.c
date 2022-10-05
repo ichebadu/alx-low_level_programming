@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _strdup - returns a pointer to a memory space that was just allocated,
+ * *_strdup - returns a pointer to a memory space that was just allocated,
  *  which duplicates the string specified as an argument.
  * @str: the string parameter
  * Return: returns NULL if str = NULL

@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - function prints two line multiplication
+ * main - function that print the multiplication of two numbers
  * @argc: argc parameter
  * @argv: an array enter from command line
  * Return: 0
@@ -8,17 +8,17 @@
 
 int main(int argc, char *argv[])
 {
-	int multiplcationTable, n1, n2;
+	int n;
 
-	if (argc != 3)
+	if (argc == 3)
 	{
-		printf("%s\n", "Error");
-		return (1);
+		n = atoi(argv[1]) * atoi(argv[2]);
+		printf("%d\n", n);
+		return (0);
 	}
-	n1 = atoi(argv[1]);
-	n2 = atoi(argv[2]);
-	multiplicationTable = n1 * n2;
-
-	printf("%d\n", multiplicationTable);
-	return (0);
+	else
+	{
+		printf("Error\n");
+		return (0);
+	}
 }

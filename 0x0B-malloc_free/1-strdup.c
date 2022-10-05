@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * _strdup - returns a pointer to a memory space that was just allocated,
+ * _strdup - function that duplicate to new memory space location
  * @str: the string parameter
  * Return: returns NULL or array
  */
@@ -28,5 +28,6 @@ char *_strdup(char *str)
 
 	if (array == NULL)
 		return (NULL);
+
 	return (array);
 }

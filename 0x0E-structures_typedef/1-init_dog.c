@@ -7,6 +7,8 @@
  * @name: the name of the dog
  * @age: the age of the dog
  * @owner: the owner of the dog
+ *
+ * Return: no return.
  */
 
 void int_dog(struct dog *d char *name, float age, char *owner)

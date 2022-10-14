@@ -1,21 +1,14 @@
-#ifndef FUNCTION_POINTER_H
-#define FUNCTION_POINTER
 #include <stdlib.h>
+#include "function_pointers.h"
 
 /**
- * print_name - writes the character n to stdout
- * @name: Name of the person
- * @f: pointer
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * print_name - prints a name
+ * @name: name to print
+ * @f: pointer to the printing function
  */
-
 void print_name(char *name, void (*f)(char *))
 {
-if (f == NULL || name == NULL)
-	{
-	return;
-	}
-(*f)(name);
+	if (!name || !f)
+		return;
+	f(name);
 }

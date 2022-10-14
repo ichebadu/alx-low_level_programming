@@ -1,27 +1,37 @@
 #include "3-calc.h"
-#include <stdio.h>
-#include <stdlib.h>
+
 /**
- * main - writes the character c to stdout
- * @argc: The character to print
- * @argv: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * main - Main function
+ * @argc: Variable int pointer
+ * @argv: Variable char
+ * Return: int
  */
+
 int main(int argc, char *argv[])
 {
-int i;
-if (argc == 4)
+	int a, b;
+	int (*teamf)(int, int) = NULL;
+
+	if (argc != 4)
 	{
-	i = (atoi(argv[1]) + atoi(argv[3]) || atoi(argv[1]) - atoi(argv[3]) || atoi(argv[1]) * atoi(argv[3])
-	|| atoi(argv[1]) / atoi(argv[3]) || atoi(argv[1]) % atoi(argv[3]));
-	printf("%d\n", i);
+		printf("Error\n");
+		return (98);
+	}
+	if (argv[2][1] != '\0')
+	{
+		printf("Error\n");
+		return (99);
+	}
+	if (argv[2][0] != '+' && argv[2][0] != '-' &&
+	argv[2][0] != '*' && argv[2][0] != '/' && argv[2][0] != '%')
+	{
+		printf("Error\n");
+		return (99);
+	}
+
+	teamf = get_op_func(argv[2]);
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+	printf("%d\n", teamf(a, b));
 	return (0);
-	}
-else
-	{
-	printf("Error\n");
-	exit(98);
-	}
 }

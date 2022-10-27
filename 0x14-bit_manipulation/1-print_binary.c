@@ -1,37 +1,35 @@
-#include <stdio.>
-#include <math.h>
 #include "main.h"
 
-
 /**
- * print_binary - This function that converts a binary number to
- * @n: decimal number
- * Return: decimal number.
- */
-
+* print_binary - this prints a binary representation of a number
+* @n: number to print binary representation of
+* Return: void
+*/
 void print_binary(unsigned long int n)
 {
-	unsigned int mask = 8388608, ban = 0;
+	unsigned long int copy, i, k;
 
-
+	copy = n;
+	i = 0;
 	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-
-	while (mask > 0)
+	while (copy != 0)
 	{
-		if ((n & mask) == 0)
-		{
-			if (ban == 1)
-				_putchar('0');
-		}
-		else
-		{
-			ban = 1;
-			_putchar('1');
-		}
-		mask = mask >> 1;
+		i++;
+		copy = copy >> 1;
 	}
-}
+	while (i)
+	{
+	copy = n;
+	for (k = 1; k < i; k++)
+	copy = copy >> 1;
+		if (copy == (copy | 1))
+		_putchar('1');
+		else
+	_putchar ('0');
+		i--;
+	}
+

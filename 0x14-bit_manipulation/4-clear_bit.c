@@ -1,35 +1,18 @@
 #include "main.h"
+
 /**
- * clear_bit - sets the value of a bit to 1 at a given index.
- * @n: point
- * @index: int
- * Return: -1
- */
+*clear_bit -this sets a bit at a position to 0
+*@n: number to be used
+*@index: position to be cleared
+*
+*Return: 1 on success, -1 on fail
+*/
+
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned int mult = 1, cont = 0;
+	if (n == NULL || (index > (sizeof(unsigned long int) * 8) - 1))
+		return (-1);
 
-	if (n == NULL)
-	{
-		return (-1);
-	}
-	if (index > 64)
-	{
-		return (-1);
-	}
-	else
-	{
-		while (cont <= index)
-		{
-			if (cont > 0)
-			{
-				mult *= 2;
-			}
-			cont++;
-		}
-		*n = (*n | mult);
-		*n = (*n ^ mult);
-		return (1);
-	}
-	return (-1);
+	*n &= ~(1 << index);
+	return (1);
 }

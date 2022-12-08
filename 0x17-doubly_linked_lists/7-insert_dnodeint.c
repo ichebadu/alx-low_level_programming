@@ -1,53 +1,71 @@
 #include "lists.h"
 
+size_t dlistint_len7(const dlistint_t *h);
+
 /**
- * insert_dnodeint_at_index - inserts a new node at given index in the list
- * @head: pointer to head of the list
- * @idx: index to add at, starting from 0
- * @n: value of new node
- * Return: new node or null
- **/
-dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int idx, int n)
+ *insert_dnodeint_at_index - inserts a new node at a  given position
+ *@idx: idex of the list where the new node should be added.(index from 0)
+ *@h: address of head of list
+ *@n: int to be  inserted
+ *Return: address of the new node
+ */
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int count;
-	dlistint_t *tmp, *new, *tmp_prev;
+unsigned int i;
+dlistint_t *lp;
+dlistint_t *np;
+if (*h == NULL)
+return (NULL);
+lp = *h;
+if (idx == 0)
+{
+np = add_dnodeint(h, n);
+return (np);
+}
+else if (idx == dlistint_len7(*h))
+{
+np = add_dnodeint_end(h, n);
+return (np);
+}
+for (i = 0; i < (idx - 1) && i <= dlistint_len7(*h); i++)
+{
+lp = lp->next;
+if (lp == NULL)
+break;
+}
+if (i == (idx - 1))
+{
+np = malloc(sizeof(*np));
+if (np == NULL)
+return (NULL);
+np->n = n;
+np->next = lp->next;
+(lp->next)->prev = np;
+np->prev = lp;
+lp->next = np;
+return (np);
+}
+return (NULL);
+}
 
-	if (head == NULL && idx > 0)
-	return (NULL);
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n, new->prev = new->next = NULL;
 
-	if (idx == 0)
-	{
-		if (*head)
-	{
-		new->next = *head;
-		(*head)->prev = new, *head = new;
-	}
-		else
-			*head = new;
-		return (new);
-	}
-	count = 1, tmp = (*head)->next;
-	while (tmp)
-	{
-		if (idx == count)
-		{
-			tmp->prev->next = new, new->prev = tmp->prev;
-			new->next = tmp, tmp->prev = new;
-			return (new);
-		}
-		count++;
-		tmp_prev = tmp;
-		tmp = tmp->next;
-	}
-	if (tmp == NULL && count == idx)
-	{
-		tmp_prev->next = new, new->prev = tmp_prev;
-		return (new);
-	}
-	free(new);
-	return (NULL);
+/**
+ *dlistint_len7 - returns the length of a list
+ *@h: list
+ *Return: no of elements in list
+ */
+size_t dlistint_len7(const dlistint_t *h)
+{
+size_t i;
+const dlistint_t *p;
+i = 0;
+if (h == NULL)
+return (0);
+p = h;
+while (p != NULL)
+{
+i++;
+p = p->next;
+}
+return (i);
 }

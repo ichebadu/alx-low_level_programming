@@ -1,41 +1,42 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
+
 /**
- * delete_dnodeint_at_index -delete node
- * Description: Function that deletes the node at index index of a dlistint.
- * @head: Head of the list. Pointer to a structure dlistint_s
- * @index: the inde of the node that should be deleted, index starts at 0
- * Return: 1 if succeed, -1 if it failed.
- **/
+ * delete_dnodeint_at_index - delete a node in a index
+ * @head: the list to delete the node
+ * @index: the index to delete
+ * Return: 1 or -1
+ */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *temp, *copy;
-	unsigned int i;
+	dlistint_t *actual;
+	size_t size;
 
+	actual = *head;
+	size = 0;
 	if (*head == NULL)
 		return (-1);
-
-	temp = *head;
-
+	while (actual != NULL)
+	{
+		size++;
+		actual = actual->next;
+	}
+	if (size < index + 1)
+		return (-1);
+	actual = *head;
 	if (index == 0)
 	{
-		temp = temp->next;
-		free(*head);
-		*head = temp;
+		*head = actual->next;
+		if (actual->next)
+			actual->next->prev = NULL;
+		actual->next = NULL;
+		free(actual);
 		return (1);
 	}
-		for (i = 1; i < index; i++)
-		{
-			if (temp->next == NULL)
-				return (-1);
-
-			temp = temp->next;
-		}
-		copy = temp;
-		copy = copy->next->next;
-		free(temp->next);
-		temp->next = copy;
-
+	while (index--)
+		actual = actual->next;
+	actual->prev->next = actual->next;
+	if (actual->next)
+		actual->next->prev = actual->prev;
+	free(actual);
 	return (1);
 }

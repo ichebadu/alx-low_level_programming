@@ -1,48 +1,41 @@
+#include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
-
-size_t dlistint_len7(const dlistint_t *h);
-
 /**
- *delete_dnodeint_at_index - deletes the node at index
- *index of a listint_t linked list.
- *@head: address to head of list
- *@index: node index
- *Return: 1 on success and -1 on failure
- */
+ * delete_dnodeint_at_index -delete node
+ * Description: Function that deletes the node at index index of a dlistint.
+ * @head: Head of the list. Pointer to a structure dlistint_s
+ * @index: the inde of the node that should be deleted, index starts at 0
+ * Return: 1 if succeed, -1 if it failed.
+ **/
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-unsigned int i;
-dlistint_t *lp;
-dlistint_t *tmp;
-dlistint_t *tmp2;
-if (*head == NULL)
-return (-1);
-lp = *head;
-if (index == 0)
-{
-*head = (*head)->next;
-free(lp);
-return (1);
-}
-for (i = 0; i < index; i++)
-{
-tmp2 = lp;
-lp = lp->next;
-}
-if (index == dlistint_len7(*head) - 1)
-{
-tmp2->next = NULL;
-free(lp);
-return (1);
-}
-else if (i == index)
-{
-tmp = lp->next;
-tmp->prev = tmp2;
-tmp2->next = tmp;
-free(lp);
-return (1);
-}
-else
-return (-1);
+	dlistint_t *temp, *copy;
+	unsigned int i;
+
+	if (*head == NULL)
+		return (-1);
+
+	temp = *head;
+
+	if (index == 0)
+	{
+		temp = temp->next;
+		free(*head);
+		*head = temp;
+		return (1);
+	}
+		for (i = 1; i < index; i++)
+		{
+			if (temp->next == NULL)
+				return (-1);
+
+			temp = temp->next;
+		}
+		copy = temp;
+		copy = copy->next->next;
+		free(temp->next);
+		temp->next = copy;
+
+	return (1);
 }

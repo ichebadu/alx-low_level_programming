@@ -1,70 +1,29 @@
-#include "lists.h"
-
-size_t dlistint_len7(const dlistint_t *h);
-
+#ifndef _LISTS_H_
+#define _LISTS_H_
 /**
- *delete_dnodeint_at_index - deletes the node at index
- *index of a listint_t linked list.
- *@head: address to head of list
- *@index: node index
- *Return: 1 on success and -1 on failure
+ * struct dlistint_s - doubly linked list
+ * @n: integer
+ * @prev: points to the previous node
+ * @next: points to the next node
+ *
+ * Description: doubly linked list node structure
+ * for Holberton project
  */
-int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
+typedef struct dlistint_s
 {
-unsigned int i;
-dlistint_t *lp;
-dlistint_t *tmp;
-dlistint_t *tmp2;
-if (*head == NULL)
-return (-1);
-lp = *head;
-if (index == 0)
-{
-*head = (*head)->next;
-free(lp);
-return (1);
-}
-for (i = 0; i < index; i++)
-{
-tmp2 = lp;
-lp = lp->next;
-}
-if (index == dlistint_len7(*head) - 1)
-{
-tmp2->next = NULL;
-free(lp);
-return (1);
-}
-else if (i == index)
-{
-tmp = lp->next;
-tmp->prev = tmp2;
-tmp2->next = tmp;
-free(lp);
-return (1);
-}
-else
-return (-1);
-}
+	int n;
+	struct dlistint_s *prev;
+	struct dlistint_s *next;
+} dlistint_t;
 
+size_t print_dlistint(const dlistint_t *h);
+size_t dlistint_len(const dlistint_t *h);
+dlistint_t *add_dnodeint(dlistint_t **head, const int n);
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
+void free_dlistint(dlistint_t *head);
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
+int sum_dlistint(dlistint_t *head);
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n);
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
 
-/**
- *dlistint_len7 - returns the length of a list
- *@h: list
- *Return: no of elements in list
- */
-size_t dlistint_len7(const dlistint_t *h)
-{
-size_t i;
-const dlistint_t *p;
-i = 0;
-if (h == NULL)
-return (0);
-p = h;
-while (p != NULL)
-{
-i++;
-p = p->next;
-}
-return (i);
-}
+#endif /* _LISTS_H_ */

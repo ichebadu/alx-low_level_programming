@@ -1,48 +1,49 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
+
 /**
- * insert_dnodeint_at_index -add node to list.
- * Description: Function that adds a new node in an index position of list
- * @h: Head of the list. Pointer to a structure dlistint_s
- * @idx: int that represents the index, where the node is going to be inserted
- * @n: integer value of the structure
- * Return: the address of the new element or NULL if fail (the new node)
- **/
+  * insert_dnodeint_at_index - inserts new node at given idx
+  * @h: pointer to head of list
+  * @idx: index of new node
+  * @n: new node data
+  * Return: address of new node
+  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *newNode, *temp = *h;
-newNode = malloc(sizeof(dlistint_t));
-	if (newNode == NULL)
-		return (NULL);
-	newNode->n = n;
+	dlistint_t *tmp = *h, *new = NULL;
+	unsigned int count = 0;
 
-	if (temp == NULL)
-		newNode->prev = NULL;
-	newNode->next = NULL;
-	*h = newNode;
+	new = malloc(sizeof(dlistint_t));
+	if (!new)
 		return (NULL);
+	new->n = n;
+	new->next = NULL;
+	new->prev = NULL;
 
 	if (idx == 0)
 	{
-		newNode->next = temp;
-		newNode->prev = NULL;
-		temp->prev = newNode;
-		*h = newNode;
-		return (newNode);
+		free(new);
+		return (add_dnodeint(h, n));
 	}
-	while ((idx - 1) > 0)
+
+	while (tmp)
 	{
-		if (temp == NULL)
+		if (idx == count)
 		{
-			free(newNode);
-			return (NULL);
+			new->next = tmp;
+			new->prev = tmp->prev;
+			tmp->prev = new;
+			new->prev->next = new;
+			return (new);
 		}
-		temp = temp->next;
-		idx--;
+		tmp = tmp->next;
+		count++;
 	}
-	newNode->next = temp->next;
-	newNode->prev = temp;
-	temp->next = newNode;
-	return (newNode);
+	if (count > idx)
+		return (NULL);
+	else if (idx == count)
+	{
+		free(new);
+		return (add_dnodeint_end(h, n));
+	}
+	return (NULL);
 }
